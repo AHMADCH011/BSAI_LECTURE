@@ -1,6 +1,5 @@
 import streamlit as st
 from groq import Groq
-import os
 
 # Page configuration
 st.set_page_config(
@@ -98,7 +97,7 @@ if prompt := st.chat_input("What would you like to know?"):
         full_response = ""
         
         try:
-            # Initialize Groq client with GROQ_API_KEY
+            # Initialize Groq client correctly (no proxies)
             client = Groq(api_key=st.session_state.GROQ_API_KEY)
             
             # Create chat completion with streaming
