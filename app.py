@@ -3,13 +3,13 @@ from groq import Groq
 
 # Page configuration
 st.set_page_config(
-    page_title="Groq AI Chat",
+    page_title="BSAI Lecture Chat",
     page_icon="🤖",
     layout="wide"
 )
 
 # Title and description
-st.title("🤖 Groq AI Chat Application")
+st.title("🤖 AI Lecture Chat Application")
 st.markdown("Chat with AI using Groq's free models")
 
 # Sidebar for API key and model selection
@@ -17,14 +17,14 @@ with st.sidebar:
     st.header("Configuration")
     
     # Initialize session state for API key
-    if "GROQ_API_KEY" not in st.session_state:
-        st.session_state.GROQ_API_KEY = ""
+    if "BSAI_LECTURE" not in st.session_state:
+        st.session_state.BSAI_LECTURE = ""
     
     # API Key input
-    st.session_state.GROQ_API_KEY = st.text_input(
+    st.session_state.BSAI_LECTURE = st.text_input(
         "Enter your Groq API Key:",
         type="password",
-        value=st.session_state.GROQ_API_KEY,
+        value=st.session_state.BSAI_LECTURE,
         help="Get your free API key from https://console.groq.com"
     )
     
@@ -80,7 +80,7 @@ for message in st.session_state.messages:
 
 # Chat input
 if prompt := st.chat_input("What would you like to know?"):
-    if not st.session_state.GROQ_API_KEY:
+    if not st.session_state.BSAI_LECTURE:
         st.error("⚠️ Please enter your Groq API key in the sidebar!")
         st.stop()
     
@@ -98,7 +98,7 @@ if prompt := st.chat_input("What would you like to know?"):
         
         try:
             # Initialize Groq client correctly (no proxies)
-            client = Groq(api_key=st.session_state.GROQ_API_KEY)
+            client = Groq(api_key=st.session_state.BSAI_LECTURE)
             
             # Create chat completion with streaming
             stream = client.chat.completions.create(
